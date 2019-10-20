@@ -5,6 +5,7 @@ import './App.css';
 import Req1 from './components/Req1/req1';
 import Req2 from './components/Req2/req2';
 import Req3 from './components/Req3/req3';
+import Req4 from './components/Req4/req4';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Req2/>
       <h3>Requirement 3: Support a newline character as an alternative delimiter.</h3>
       <Req3/>
+      <h3>Requirement 4: Deny negative numbers by throwing an exception that includes all of the negative numbers provided.</h3>
+      <Req4/>
     </div>
   );
 }

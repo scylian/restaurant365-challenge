@@ -1,11 +1,11 @@
 import React from 'react';
-import Req1 from './req1';
+import Req4 from './req4';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 
 afterEach(cleanup);
 
 test('Correct String Format', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
+	const { getByLabelText, getByTestId } = render(<Req4/>);
 
 	const inputField = getByLabelText('Input');
 	const outputField = getByTestId('output-field');
@@ -21,7 +21,7 @@ test('Correct String Format', () => {
 });
 
 test('Empty Input', () => {
-	const { getByTestId } = render(<Req1/>);
+	const { getByTestId } = render(<Req4/>);
 
 	const outputField = getByTestId('output-field');
 	const submitButton = getByTestId('submit-button');
@@ -32,7 +32,7 @@ test('Empty Input', () => {
 });
 
 test('Single Number Input', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
+	const { getByLabelText, getByTestId } = render(<Req4/>);
 
 	const inputField = getByLabelText('Input');
 	const outputField = getByTestId('output-field');
@@ -47,24 +47,8 @@ test('Single Number Input', () => {
 	expect(outputField.textContent).toBe('1');
 });
 
-test('Too Many Delimiters', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
-
-	const inputField = getByLabelText('Input');
-	const outputField = getByTestId('output-field');
-	const submitButton = getByTestId('submit-button');
-
-	fireEvent.change(inputField, {
-		target: { value: '1,2,3,4,5,6,7,8' }
-	})
-	
-	fireEvent.click(submitButton);
-
-	expect(outputField.textContent).toBe('Too Many Numbers');
-})
-
 test('Single Incorrect Input', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
+	const { getByLabelText, getByTestId } = render(<Req4/>);
 
 	const inputField = getByLabelText('Input');
 	const outputField = getByTestId('output-field');
@@ -80,7 +64,7 @@ test('Single Incorrect Input', () => {
 })
 
 test('Both Incorrect Inputs', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
+	const { getByLabelText, getByTestId } = render(<Req4/>);
 
 	const inputField = getByLabelText('Input');
 	const outputField = getByTestId('output-field');
@@ -95,18 +79,50 @@ test('Both Incorrect Inputs', () => {
 	expect(outputField.textContent).toBe('0');
 })
 
-test('Single Negative Input', () => {
-	const { getByLabelText, getByTestId } = render(<Req1/>);
+test('More than 2 Inputs', () => {
+	const { getByLabelText, getByTestId } = render(<Req4/>);
 
 	const inputField = getByLabelText('Input');
 	const outputField = getByTestId('output-field');
 	const submitButton = getByTestId('submit-button');
 
 	fireEvent.change(inputField, {
-		target: { value: '4,-3' }
+		target: { value: '1,2,3,4,5,6,7,8,9,10,11,12' }
 	})
 	
 	fireEvent.click(submitButton);
 
-	expect(outputField.textContent).toBe('1');
+	expect(outputField.textContent).toBe('78');
+})
+
+test('Newline as alternative delimiter', () => {
+	const { getByLabelText, getByTestId } = render(<Req4/>);
+
+	const inputField = getByLabelText('Input');
+	const outputField = getByTestId('output-field');
+	const submitButton = getByTestId('submit-button');
+
+	fireEvent.change(inputField, {
+		target: { value: `1\n2,3` }
+	})
+	
+	fireEvent.click(submitButton);
+
+	expect(outputField.textContent).toBe('6');
+})
+
+test('Deny Negative Numbers', () => {
+	const { getByLabelText, getByTestId } = render(<Req4/>);
+
+	const inputField = getByLabelText('Input');
+	const outputField = getByTestId('output-field');
+	const submitButton = getByTestId('submit-button');
+
+	fireEvent.change(inputField, {
+		target: { value: `1\n2,3,-10,-12` }
+	})
+	
+	fireEvent.click(submitButton);
+
+	expect(outputField.textContent).toBe('Error: No negative numbers allowed - Negative Numbers: -10,-12');
 })
