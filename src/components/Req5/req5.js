@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Req4 extends Component {
+class Req5 extends Component {
 	constructor(props) {
 		super(props)
 
@@ -27,7 +27,7 @@ class Req4 extends Component {
 		}
 
 		let convertedString = parsedString.map((number) => {
-			if (isNaN(number) || number === '') {
+			if (isNaN(number) || number === '' || number > 1000) {
 				number = 0;
 			} else {
 				number = parseInt(number, 10);
@@ -67,4 +67,4 @@ class Req4 extends Component {
 	}
 }
 
-export default Req4
+export default Req5
