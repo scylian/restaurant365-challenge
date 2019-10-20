@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Req1 extends Component {
+class Req2 extends Component {
 	constructor(props) {
 		super(props)
 
@@ -25,25 +25,21 @@ class Req1 extends Component {
 			}
 		}
 
-		if (parsedString.length > 2) {
-			this.setState({ output: 'Too Many Numbers' })
-		} else {
-			let convertedString = parsedString.map((number) => {
-				if (isNaN(number) || number === '') {
-					number = 0;
-				} else {
-					number = parseInt(number, 10);
-				}
+		let convertedString = parsedString.map((number) => {
+			if (isNaN(number) || number === '') {
+				number = 0;
+			} else {
+				number = parseInt(number, 10);
+			}
 
-				return number;
-			})
-			
-			let sum = convertedString.reduce((accumulator, currentValue) => {
-				return accumulator + currentValue;
-			});
+			return number;
+		})
+		
+		let sum = convertedString.reduce((accumulator, currentValue) => {
+			return accumulator + currentValue;
+		});
 
-			this.setState({ output: sum })
-		}
+		this.setState({ output: sum })
 
 	}
 	
@@ -62,4 +58,4 @@ class Req1 extends Component {
 	}
 }
 
-export default Req1
+export default Req2
