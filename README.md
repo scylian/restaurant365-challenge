@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# challenge-calculator
+Restaurant365 Code Challenge - String Calculator
 
-## Available Scripts
+## Summary
+Create a calculator that only supports an Add operation given a single formatted string
 
-In the project directory, you can run:
+* html / javascript / react
+* Include unit tests
+* Provide code via a public distributed version control repository i.e. GitHub. Do NOT fork this repo
+* Show each step as a separate commit
+* Efficient code is always important but for this excercise readability and separation of concerns are much more critical
+* Not including one or more of the stretch goals will not affect your overall assessment but implementing them poorly will
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Requirements
+1. Support a maximum of 2 numbers using a comma delimiter. Throw an exception when more than 2 numbers are provided
+	* examples: `20` will return `20`; `1,5000` will return `5001`; `4,-3` will return `1`
+	* empty input or missing numbers should be converted to `0`
+	* invalid numbers should be converted to `0` e.g. `5,tytyt` will return `5`
+2. Remove the maximum constraint for numbers e.g. `1,2,3,4,5,6,7,8,9,10,11,12` will return `78`
+3. Support a newline character as an alternative delimiter e.g. `1\n2,3` will return `6` 
+4. Deny negative numbers by throwing an exception that includes all of the negative numbers provided
+5. Make any value greater than 1000 an invalid number e.g. `2,1001,6` will return `8`
+6. Support 1 custom delimiter of a single character using the format: `//{delimiter}\n{numbers}`
+	* examples: `//#\n2#5` will return `7`; `//,\n2,ff,100` will return `102` 
+	* all previous formats should also be supported
+7. Support 1 custom delimiter of any length using the format: `//[{delimiter}]\n{numbers}`
+	* example: `//[***]\n11***22***33` will return `66`
+	* all previous formats should also be supported
+8. Support multiple delimiters of any length using the format: `//[{delimiter1}][{delimiter2}]...\n{numbers}`
+	* example: `//[*][!!][r9r]\n11r9r22*hh*33!!44` will return `110`
+	* all previous formats should also be supported
