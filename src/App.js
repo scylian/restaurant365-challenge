@@ -8,6 +8,7 @@ import Req3 from './components/Req3/req3';
 import Req4 from './components/Req4/req4';
 import Req5 from './components/Req5/req5';
 import Req6 from './components/Req6/req6';
+import Req7 from './components/Req7/req7';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       <h3>Requirement 6: Support 1 custom delimiter of a single character.</h3>
       <h4>Format: <code style={{backgroundColor:'#ccc'}}>{'//{delimiter}'}\n{'{numbers}'}</code></h4>
       <Req6/>
+      <h3>Requirement 7: Support 1 custom delimiter of any length.</h3>
+      <h4>Format: <code style={{backgroundColor:'#ccc'}}>{'//[{delimiter}]'}\n{'{numbers}'}</code></h4>
+      <Req7/>
     </div>
   );
 }
