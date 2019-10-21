@@ -7,6 +7,7 @@ import Req2 from './components/Req2/req2';
 import Req3 from './components/Req3/req3';
 import Req4 from './components/Req4/req4';
 import Req5 from './components/Req5/req5';
+import Req6 from './components/Req6/req6';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       <Req4/>
       <h3>Requirement 5: Make any value greater than 1000 an invalid number.</h3>
       <Req5/>
+      <h3>Requirement 6: Support 1 custom delimiter of a single character.</h3>
+      <h4>Format: <code style={{backgroundColor:'#ccc'}}>{'//{delimiter}'}\n{'{numbers}'}</code></h4>
+      <Req6/>
     </div>
   );
 }
